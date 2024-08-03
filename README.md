@@ -97,39 +97,13 @@ In case the Firewall blocks the access, allow Matlab to access the network
 
 Handles goal position updates from ROS.
 
-```matlab
-function [] = goalCallback(~, msg, goalHandle)
-    goalHandle.x = msg.Pose.Position.X;
-    goalHandle.y = msg.Pose.Position.Y;
-    eul = quat2eul([msg.Pose.Orientation.W, msg.Pose.Orientation.X, ...
-                    msg.Pose.Orientation.Y, msg.Pose.Orientation.Z]);
-    goalHandle.theta = eul(1); % Extract yaw angle
-    disp("Received goal");
-end
-```
-
 ### OdometryMsg2Pose
 
 Converts odometry messages to a pose vector.
 
-```matlab
-function [ x, y, theta ] = OdometryMsg2Pose(poseMsg)
-    x = poseMsg.Pose.Pose.Position.X;
-    y = poseMsg.Pose.Pose.Position.Y;
-    eul = quat2eul([poseMsg.Pose.Pose.Orientation.W, poseMsg.Pose.Pose.Orientation.X,  poseMsg.Pose.Pose.Orientation.Y, poseMsg.Pose.Pose.Orientation.Z]);
-    theta = eul(1);
-end
-```
-
 ### goalHandle2goalPose
 
 Converts goal handle to goal pose.
-
-```matlab
-function goalPose = goalHandle2goalPose(goalHandle)
-    goalPose = [goalHandle.x, goalHandle.y, goalHandle.theta];
-end
-```
 
 ## References
 
