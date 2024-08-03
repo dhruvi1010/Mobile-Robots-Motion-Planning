@@ -77,10 +77,11 @@ The project utilizes several ROS Noetic packages. Ensure you have the following 
 1. Set the ROS environment variables and initialize the ROS node:
 
     ```matlab
-    setenv('ROS_MASTER_URI', 'http://192.168.11.128:11311');
-    setenv('ROS_IP', '192.168.11.128.1');
+    setenv('ROS_MASTER_URI', 'http://192.168.**.**:11311'); % Your ROS_MASTER_URI
+    setenv('ROS_IP', '192.168.**.***');  % IP of UBUNTU
     rosinit;
     ```
+In case the Firewall blocks the access, allow Matlab to access the network
 
 2. Run the main navigation script:
 
@@ -142,5 +143,3 @@ end
 - [MATLAB ROS Toolbox](https://www.mathworks.com/products/ros.html)
 - [Rapidly-exploring Random Tree (RRT)](https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree)
 - [Timed Elastic Band (TEB)](http://wiki.ros.org/teb_local_planner)
-
-For any issues or contributions, please refer to the project's [GitHub repository](https://github.com/yourusername/robot_navigation_project).
