@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+<world name="rst_lab">
+
+  <scene>
+    <ambient>0.5 0.5 0.5 1.0</ambient>
+    <shadows>0</shadows>
+  </scene>
+  <physics type='ode'>
+    <real_time_update_rate>1000</real_time_update_rate>
+    <max_step_size>0.001</max_step_size>
+    <ode>
+	<solver>   
+           <friction_model>cone_model</friction_model>
+        </solver>
+  	<constraints>
+	  <cfm>0.001</cfm>
+	  <erp>1</erp>
+	</constraints>
+    </ode>
+   </physics>
+  <include>
+    <uri>model://sun</uri>
+    <pose>0.0 0.0 15.0 0 0 0</pose>
+    <cast_shadows>false</cast_shadows>
+    <attenuation>
+      <constant>0.5</constant>
+      <linear>0.01</linear>
+      <quadratic>0.0</quadratic>
+      <range>100</range>
+    </attenuation>
+  </include>
+
+  <include>
+    <uri>model://rst_lab</uri>
+    <static>true</static>
+    <pose>0 0 0 0 0 0</pose>
+    <!--<size> 1 1</size>-->
+    <name>rst_lab</name>
+  </include>
+
+ <model name="ground_plane">
+    <static>true</static>
+    <link name="link">
+      <collision name="collision">
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>150 150</size>
+          </plane>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1000</mu>
+              <mu2>1000</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>150 150</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey </name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+
+
+</world>
+</sdf>

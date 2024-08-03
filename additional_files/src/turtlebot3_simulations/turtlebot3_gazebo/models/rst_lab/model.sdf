@@ -1,0 +1,34 @@
+<?xml version='1.0'?>
+<sdf version='1.4'>
+  <model name="rst_lab">
+    <link name="link">
+      <collision name="collision">
+        <pose>0.0 -9.0 0.0 0.0 0.0 0.0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.8 0.8 1</scale>
+            <uri>model://rst_lab/rst_lab.dae</uri>
+
+	  </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <pose>0.0 -9.0 0.0 0.0 0.0 0.0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.8 0.8 1</scale>
+            <uri>model://rst_lab/rst_lab.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+        <sensor name='rst_lab_contact' type='contact'>
+          <contact>
+            <collision>track_collision</collision>
+          </contact>
+		<update_rate>5</update_rate>-->
+ 		<!--<plugin name="my_plugin" filename="libcontact_sensor.so"/>-->
+        </sensor>
+    </link>
+    <static>1</static>
+  </model>
+</sdf>
